@@ -1,0 +1,59 @@
+﻿@model IEnumerable<stock_taking_system.Models.Vehicles>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Vehicle Stock</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@* Displays Vehicle Information*@
+<div id="results">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Make)                                  
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Features)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var vh in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => vh.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vh.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vh.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => vh.Features)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@vh.ID">Update</a>
+                        <a asp-action="Details" asp-route-id="@vh.ID">Details</a>
+                        <a asp-action="Delete" asp-route-id="@vh.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
